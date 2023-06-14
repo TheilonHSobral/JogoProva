@@ -59,14 +59,13 @@ public class JogoController {
         public String update(
             @RequestParam("id") int id,
             @RequestParam("titulo") String titulo,
-            @RequestParam("anoDeLancamento") int anoDeLancamento)
-        {
+            @RequestParam("anoDeLancamento") int anoDeLancamento) {
             Optional<Jogo> jogo = jogoRepo.findById(id);
 
             if(jogo.isPresent()){
                 jogo.get().setTitulo(titulo);
                 jogo.get().setAnoDeLancamento(anoDeLancamento);
-                jogoRepo.save(jogo.get);
+                jogoRepo.save(jogo.get());
             }
 
             return "redirect:/jogo/list";
